@@ -43,7 +43,15 @@ public class RequestHandler implements Runnable {
             String clientAddress = inetAddress.getHostAddress();
             System.out.println("Connection from " + clientAddress);
             BufferedReader d = new BufferedReader(new InputStreamReader(in));
-            outputStream.writeUTF("Lucky is a female dog with 3 legs, he arrived at our facility on 10-20-20");
+            outputStream.writeUTF("1"); //id
+            outputStream.writeUTF("Lucky"); // name
+            outputStream.writeInt(2); // age
+            outputStream.writeUTF("dog"); // species
+            outputStream.writeUTF("are"); // fixed
+            outputStream.writeDouble(26.25); // weight
+            outputStream.writeInt(4);
+            outputStream.writeUTF("10-01-20");
+           
             outputStream.flush();
             ;
             

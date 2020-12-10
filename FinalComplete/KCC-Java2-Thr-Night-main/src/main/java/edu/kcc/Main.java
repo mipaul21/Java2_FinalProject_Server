@@ -16,8 +16,6 @@ import java.util.Scanner;
 
 /**
  *
- * @author k0519415
- * @author Nathaniel Webber
  */
 public class Main {
 
@@ -32,13 +30,23 @@ public class Main {
         Socket socket = new Socket(HOST_NAME, PORT);
         DataInputStream inputStream = new DataInputStream(socket.getInputStream());
         DataOutputStream outputStream = new DataOutputStream(socket.getOutputStream());
+        
         outputStream.writeUTF(response);
         outputStream.flush();
-        String animalInfo = inputStream.readUTF();
-        System.out.println(animalInfo);
+        String animalId = inputStream.readUTF();
+        String name = inputStream.readUTF();
+        int age = inputStream.readInt();
+        String species = inputStream.readUTF();
+        String fixed = inputStream.readUTF();
+        Double weight = inputStream.readDouble();
+        int legs = inputStream.readInt();
+        String dateAcquired = inputStream.readUTF();
+        System.out.println(name + "'s id is :" + animalId + " They are a " + age + " year old " + species
+        + " they " + fixed +" fixed. " + name + " weighs " +  weight + " lbs. With " + legs + " legs. We acquired " + name 
+        + " on " + dateAcquired);
         inputStream.close();
         outputStream.close();
-        return animalInfo;
+        return response;
     }
   
   	
